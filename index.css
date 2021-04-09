@@ -1,0 +1,121 @@
+@font-face {
+    font-family: "mariomaker";
+    src: url("./font/mariomaker_font.ttf");
+}
+
+@media (max-width: 400px) { 
+    body { font-size: 7px; }
+}
+
+@media (min-width: 400px) { 
+    body { font-size: 9px; }
+}
+
+@media (min-width: 768px) { 
+    body { font-size: 12px; }
+ }
+
+@media (min-width: 992px) { 
+    body { font-size: 14px; }
+ }
+
+
+h1 {
+    font-family: mariomaker;
+    text-align: center;
+    font-size: 5em;
+    letter-spacing: 1rem;
+}
+
+html {
+    background-color: #ffd800;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+}
+
+#bingo-container {
+    font-family: "mariomaker";
+
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    gap: 0px 0px;
+    width: 70vh;
+
+    border-left: 6px solid black;
+    border-top: 6px solid black;
+}
+
+#bingo-container div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 1.5em;
+    overflow: hidden;
+
+    aspect-ratio: 1;
+    border-bottom: 6px solid black;
+    border-right: 6px solid black;
+}
+
+#bingo-container div:nth-child(5n) {
+    background-color: #ff87ef;
+}
+
+#bingo-container div:nth-child(5n + 1) {
+    background-color: #5e5eff;
+}
+
+#bingo-container div:nth-child(5n + 2) {
+    background-color: #247c2d;
+}
+
+#bingo-container div:nth-child(5n + 3) {
+    background-color: #ffd800;
+}
+
+.grid-container div:nth-child(5n + 4) {
+    background-color: #ff3232;
+}
+
+.cunked::before {
+    position: absolute;
+    content: "Yeah";
+    font-size: 2em;
+    color:rgba(255, 255, 255, 0.6);
+    -webkit-animation:sway 4s both infinite;
+    animation:sway 4s both infinite;
+}
+
+@keyframes sway {
+    0%, 100%{ transform: rotate(-8deg);}
+    50%{ transform: rotate(6deg); }
+}
+
+.footer {
+    font-family: Arial, Helvetica, sans-serif;
+    position: fixed;
+    font-size: 2em;
+    bottom: 0;
+    display:flex;
+    align-items: center;
+    padding-bottom: 1rem;
+    padding-left: 1rem;
+}
+
+
+.footer img {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+}
+
+.footer small {
+    color: #b88a00;
+    font-size: 0.75em;
+}
