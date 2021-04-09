@@ -23,7 +23,7 @@ const bingoTiles = [
     'Ends with more points than he started with',
     'Rare Homie Sighting',
     'Forgets he can longjump in 3D World',
-    '"Yeah I lose this one for sure" (and looses)',
+    '"Yeah I lose this one for sure" (and loses)',
     '"Yeah I lose this one for sure" (and wins)',
     'Impossible Fast Conveyor',
     'Tries to cheese and looses because of that',
