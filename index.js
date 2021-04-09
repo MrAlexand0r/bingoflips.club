@@ -36,7 +36,7 @@ document.getElementById("bingo-container").innerHTML = generateBingoCard();
 
 document.querySelectorAll('.bingo-tile').forEach(e =>
     e.addEventListener('click', event => {
-        event.target.className += " cunked";
+            event.target.className = `bingo-tile ${event.target.className.includes('cunked') ? '' : 'cunked'}`;
     })
 );
 
