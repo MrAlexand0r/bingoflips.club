@@ -27,7 +27,9 @@ const bingoTiles = [
     '"Yeah I lose this one for sure" (and wins)',
     'Impossible Fast Conveyor',
     'Tries to cheese and looses because of that',
-    'Sudden 1v1'
+    'Sudden 1v1',
+    'Died to Boom Boom',
+    'More than 3 Boom Booms'
 ];
 
 console.log(bingoTiles);
