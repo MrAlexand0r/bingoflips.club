@@ -32,8 +32,6 @@ const bingoTiles = [
     'More than 3 Boom Booms'
 ];
 
-console.log(bingoTiles);
-
 document.getElementById("bingo-container").innerHTML = generateBingoCard();
 
 document.querySelectorAll('.bingo-tile').forEach(e =>
