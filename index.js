@@ -34,9 +34,19 @@ const bingoTiles = [
 
 document.getElementById("bingo-container").innerHTML = generateBingoCard();
 
+Splitting({
+	whitespace: true
+});
+
+const counterContainerEl = document.getElementById('counter-container');
+const bingoCounterEl = document.getElementById('bingo-counter');
+let bingoCount = 0;
+
 document.querySelectorAll('.bingo-tile').forEach(e =>
     e.addEventListener('click', event => {
-            event.target.className = `bingo-tile ${event.target.className.includes('cunked') ? '' : 'cunked'}`;
+        event.target.className = `bingo-tile ${event.target.className.includes('cunked') ? '' : 'cunked'}`;
+
+        checkBingoCount();
     })
 );
 
@@ -46,4 +56,82 @@ function generateBingoCard() {
     return randomBingoTiles.map(tile => `
     <div class="bingo-tile">${tile}</div>
     `).join("");
+}
+
+function checkBingoCount() {
+    const tiles = document.querySelectorAll('.bingo-tile');
+
+    let row = 0;
+    let column = 0;
+    const prevBingoCount = bingoCount;
+    const tilesMatrix = getMatrix(5);
+
+    tiles.forEach((tile, i) => {
+        column = i % 5;
+        row = Math.floor(i / 5);
+        tilesMatrix[row][column] = tile.classList.contains('cunked'); // fill bool matrix
+    });
+
+    bingoCount = 0;
+    bingoCount += rowSolver(tilesMatrix);
+    bingoCount += columnSolver(tilesMatrix);
+    bingoCount += diagonalSolver(tilesMatrix);
+
+    // show counter when we have bingo
+    counterContainerEl.className = (bingoCount > 0) ? 'visible' : '';
+    bingoCounterEl.innerHTML = bingoCount > 1 ? bingoCount : '';
+
+    if (bingoCount > prevBingoCount) {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
+}
+
+function rowSolver(matrix) {
+    return matrix.reduce((carry, row) => {
+        return row.reduce((c, tile) => c && tile) ? carry + 1 : carry;
+    }, 0);
+};
+
+function columnSolver(matrix) {
+    return rowSolver(rotateMatrix(5, matrix));
+};
+
+function diagonalSolver(matrix) {
+    let wins = 0;
+
+    // i x i
+    const leftToRight = matrix.reduce((carry, row, i) => {
+        return carry && row[i];
+    }, true);
+
+    // i x length - i
+    const rightToLeft = matrix.reduce((carry, row, i) => {
+        return carry && row[row.length - 1 - i];
+    }, true);
+
+    if (leftToRight) wins++;
+    if (rightToLeft) wins++;
+
+    return wins;
+}
+
+// returns an N x N matrix
+function getMatrix(n) {
+    mat = [];
+    for (i = 0; i < n; i++) {
+        mat.push(Array.apply(null, {length: n}).map(() => null));
+    }
+
+    return mat;
+}
+
+// rotate a 2D array by 90 degrees in counter-clockwise direction
+function rotateMatrix(n, matrix) {
+    transpose = (m) => m[0].map((x,i) => m.map(x => x[i]));
+
+    return transpose(matrix);
 }

@@ -14,7 +14,7 @@
         <meta name="author" content="unlucc">
         <meta http-equiv="Cache-Control" content="no-siteapp" />
         <meta name="google" value="notranslate">
-        
+
         <link rel="apple-touch-icon" sizes="180x180" href="assets/favicon/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="assets/favicon/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="assets/favicon/favicon-16x16.png">
@@ -39,12 +39,17 @@
     <body>
         <h1>Walkies Bingo</h1>
 
+        <div id="counter-container">
+            <span class="splitting rotating" data-splitting>Bingo</span>
+            <div id="bingo-counter"></div>
+        </div>
+
         <div class="grid-container">
             <div id="bingo-container"></div>
         </div>
 
         <div class="footer">
-            <small>My RSN:</small> unlucc | 
+            <small>My RSN:</small> unlucc |
             <a alt="github logo" href="https://github.com/MrAlexand0r/bingoflips.club">
                 <img src="./assets/github.png"/>
             </a>
@@ -54,4 +59,9 @@
 
 </html>
 
+<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting.css" />
+<link rel="stylesheet" href="https://unpkg.com/splitting/dist/splitting-cells.css" />
+<script src="https://unpkg.com/splitting/dist/splitting.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.4.0/dist/confetti.browser.min.js"></script>
 <script src="index.js"></script>
+<script src="drag.js"></script>
