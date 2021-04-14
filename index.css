@@ -106,6 +106,8 @@ html {
     border-radius: 50%;
     overflow: hidden;
     background-color: #ff3232;
+    z-index: 1;
+    cursor: move;
 }
 
 #counter-container .splitting {
