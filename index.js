@@ -34,9 +34,24 @@ const bingoTiles = [
 
 document.getElementById("bingo-container").innerHTML = generateBingoCard();
 
+Splitting({
+	whitespace: true
+});
+
+const counterContainerEl = document.getElementById('counter-container');
+const bingoCounterEl = document.getElementById('bingo-counter');
+let bingoCount = 0;
+
 document.querySelectorAll('.bingo-tile').forEach(e =>
     e.addEventListener('click', event => {
-            event.target.className = `bingo-tile ${event.target.className.includes('cunked') ? '' : 'cunked'}`;
+        event.target.className = `bingo-tile ${event.target.className.includes('cunked') ? '' : 'cunked'}`;
+
+        // TODO: get bingo count from cunked items in table grid?
+        bingoCount++;
+
+        // show counter when we have bingo
+        counterContainerEl.className = (bingoCount > 0) ? 'visible' : '';
+        bingoCounterEl.innerHTML = bingoCount;
     })
 );
 

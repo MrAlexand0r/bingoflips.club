@@ -3,19 +3,19 @@
     src: url("./font/mariomaker_font.ttf");
 }
 
-@media (max-width: 400px) { 
+@media (max-width: 400px) {
     body { font-size: 7px; }
 }
 
-@media (min-width: 400px) { 
+@media (min-width: 400px) {
     body { font-size: 9px; }
 }
 
-@media (min-width: 768px) { 
+@media (min-width: 768px) {
     body { font-size: 12px; }
  }
 
-@media (min-width: 992px) { 
+@media (min-width: 992px) {
     body { font-size: 14px; }
  }
 
@@ -96,6 +96,65 @@ html {
 @keyframes sway {
     0%, 100%{ transform: rotate(-8deg);}
     50%{ transform: rotate(6deg); }
+}
+
+#counter-container {
+    display: block;
+    position: absolute;
+    visibility: hidden;
+
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #ff3232;
+}
+
+#counter-container .splitting {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+
+    text-transform: uppercase;
+    color: white;
+    border-radius: 50%;
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.rotating {
+    animation: rotating 8s linear infinite;
+}
+
+#counter-container .char {
+    position: absolute;
+    offset-path: path("M -20, 55 a 80,80 0 1,1 160,0 a 80,80 0 1,1 -160,0");
+    offset-distance: calc(2em * var(--char-index));
+    padding-top: 4rem;
+
+    text-transform: uppercase;
+    font-size: 24px;
+    font-family: "mariomaker";
+}
+
+#bingo-counter {
+    color: white;
+    font-family: "mariomaker";
+    font-size: xxx-large;
+    text-align: center;
+
+    height: 1em;
+    width: 1em;
+    padding: 0.7em;
+}
+
+#counter-container.visible {
+    visibility: visible;
 }
 
 .footer {
