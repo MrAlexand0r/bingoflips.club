@@ -63,6 +63,7 @@ function checkBingoCount() {
 
     let row = 0;
     let column = 0;
+    const prevBingoCount = bingoCount;
     const tilesMatrix = getMatrix(5);
 
     tiles.forEach((tile, i) => {
@@ -79,6 +80,14 @@ function checkBingoCount() {
     // show counter when we have bingo
     counterContainerEl.className = (bingoCount > 0) ? 'visible' : '';
     bingoCounterEl.innerHTML = bingoCount > 1 ? bingoCount : '';
+
+    if (bingoCount > prevBingoCount) {
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.6 }
+        });
+    }
 }
 
 function rowSolver(matrix) {
